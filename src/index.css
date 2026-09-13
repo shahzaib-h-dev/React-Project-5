@@ -4,30 +4,49 @@
 
 body {
     margin: 0;
-    background-color: #0B2434;
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: #0B2434; 
+    font-family: sans-serif;
 }
 
-div#root {
-    height: 100%;
-    width: 100%;
-    max-height: 400px;
-    max-width: 400px;
+#root {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 main {
     background-color: #F5F5F5;
-    height: 100%;
-    border-radius: 5px;
-    /* Box ko bara aur chora karne ke liye */
     width: 100%;
-    max-width: 100%; 
-    min-height: 400px; 
+    max-width: 420px; 
+    height: 420px; 
+    border-radius: 10px;
     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px; 
+}
 
+.die-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px; 
+}
+
+.die-face {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15); 
+    font-size: 20px;
+    font-weight: bold;
+    color: #2b283a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }

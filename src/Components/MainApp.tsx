@@ -1,10 +1,20 @@
+import { Die } from "./Die";
+
 export function MainApp(){
-    return(
-        <>
+    return (
         <main>
-            Type  SomeThing 
-            
-            </main>
-        </>
+            <div className="die-container">
+                <Die value={1} />
+                <Die value={2} />
+                <Die value={3} />
+                <Die value={4} />
+                <Die value={5} />
+                <Die value={6} />
+                <Die value={1} />
+                <Die value={1} />
+                <Die value={1} />
+                <Die value={1} />
+            </div>
+        </main>
     );
 }
