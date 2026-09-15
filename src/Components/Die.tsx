@@ -7,6 +7,11 @@
 
     return (
         
-        <button style={styles} className="die-face">{props.value}</button>
+        <button
+            style={styles}
+            className="die-face"
+            onClick={ props.hold}
+          
+        >{props.value}</button>
     );
 }

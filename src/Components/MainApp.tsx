@@ -17,8 +17,18 @@ export function MainApp(){
     setDice(generateAllNewDice)
    }
 
+   function hold(id: any){
+    console.log()
+   }
+
  const diceElements = dice.map( dieObj => 
- <Die value={dieObj.value} isHeld={dieObj.isHeld}/>) 
+ <Die 
+    value={dieObj.value}
+    isHeld={dieObj.isHeld}
+    hold ={() =>hold (dieObj) }  
+  
+  />) 
+
     return (
         <main>
             <div className="die-container">
