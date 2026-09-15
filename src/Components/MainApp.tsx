@@ -1,38 +1,45 @@
 import { useState } from "react";
 import { Die } from "./Die";
 
-export function MainApp(){
-
-    const[dice, setDice] = useState(generateAllNewDice)
-
-
-   function generateAllNewDice(){
-    return new Array(10).fill(0)
-    .map(() => ({value: Math.ceil(Math.random() * 6), isHeld: true
-
-    }))
-    }
+export function MainApp() {
+    
    
-   function rollDice(){
-    setDice(generateAllNewDice)
-   }
+    const [dice, setDice] = useState(generateAllNewDice)
 
-   function hold(id: any){
-    console.log()
-   }
+    function generateAllNewDice() {
+        return new Array(10).fill(0).map(() => ({
+            value: Math.ceil(Math.random() * 6),
+            isHeld: false, 
+            id: crypto.randomUUID() 
+        }))
+    }
+    
+    function rollDice() {
+        setDice(generateAllNewDice()) 
+    }
 
- const diceElements = dice.map( dieObj => 
- <Die 
-    value={dieObj.value}
-    isHeld={dieObj.isHeld}
-    hold ={() =>hold (dieObj) }  
-  
-  />) 
+    function hold(id: string) { 
+        setDice(oldDice =>  oldDice.map(die => 
+        (
+                die.id === id ?
+                    { ...die, isHeld: !die.isHeld } : die
+        ))
+        )
+    }
+
+    const diceElements = dice.map(dieObj =>
+        <Die
+            key={dieObj.id} 
+            value={dieObj.value}
+            isHeld={dieObj.isHeld}
+            hold={() => hold(dieObj.id)}  
+        />
+    )
 
     return (
         <main>
             <div className="die-container">
-             {diceElements}
+                {diceElements}
             </div>
 
             <button className="roll-btn" onClick={rollDice}> Roll </button>
