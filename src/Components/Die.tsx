@@ -1,6 +1,12 @@
  export function Die(props: any){
+
+    const styles = {
+        backgroundColor: props.isHeld ? "#59E391" : "white"
+  
+    }
+
     return (
-        // Value render ki hai aur class add ki hai
-        <button className="die-face">{props.value}</button>
+        
+        <button style={styles} className="die-face">{props.value}</button>
     );
 }
