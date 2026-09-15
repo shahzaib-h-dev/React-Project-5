@@ -10,7 +10,7 @@
         <button
             style={styles}
             className="die-face"
-            onClick={ props.hold}
+            onClick={ () => props.hold ()}
           
         >{props.value}</button>
     );
