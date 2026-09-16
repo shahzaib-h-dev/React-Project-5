@@ -4,7 +4,8 @@ import Confetti from "react-confetti"
 
 export function MainApp() {
     
-    const [dice, setDice] = useState(generateAllNewDice())
+    // Lazy state initialization added here
+    const [dice, setDice] = useState(() => generateAllNewDice())
 
     const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0]?.value)
 
