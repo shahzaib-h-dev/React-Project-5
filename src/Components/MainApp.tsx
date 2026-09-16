@@ -3,8 +3,9 @@ import { Die } from "./Die";
 
 export function MainApp() {
     
-   
     const [dice, setDice] = useState(generateAllNewDice)
+
+    const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0]?.value)
 
     function generateAllNewDice() {
         return new Array(10).fill(0).map(() => ({
@@ -14,18 +15,22 @@ export function MainApp() {
         }))
     }
     
-function rollDice() {
-        setDice(oldDice => oldDice.map(die => {
-           
-            return die.isHeld ? 
-                die : 
+    function rollDice() {
 
-                {
-                    value: Math.ceil(Math.random() * 6),
-                    isHeld: false,
-                    id: crypto.randomUUID()
-                }
-        })) 
+        if (gameWon) {
+            setDice(generateAllNewDice())
+        } else {
+         
+            setDice(oldDice => oldDice.map(die => {
+                return die.isHeld ? 
+                    die : 
+                    {
+                        value: Math.ceil(Math.random() * 6),
+                        isHeld: false,
+                        id: crypto.randomUUID()
+                    }
+            })) 
+        }
     }
 
     function hold(id: string) { 
@@ -48,15 +53,16 @@ function rollDice() {
 
     return (
         <main>
-
           <h1 className="title">Tenzies</h1>
-          <p>Roll untill all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
 
             <div className="die-container">
                 {diceElements}
             </div>
 
-            <button className="roll-btn" onClick={rollDice}> Roll </button>
+            <button className="roll-btn" onClick={rollDice}>
+                 {gameWon ? "New Game" : "Roll" }
+            </button>
         </main>
     );
 }
