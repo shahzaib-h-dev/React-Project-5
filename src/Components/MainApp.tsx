@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Die } from "./Die";
+import Confetti from "react-confetti"
 
 export function MainApp() {
     
@@ -53,8 +54,11 @@ export function MainApp() {
 
     return (
         <main>
-          <h1 className="title">Tenzies</h1>
-          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+           
+            {gameWon && <Confetti />}
+
+            <h1 className="title">Tenzies</h1>
+            <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
 
             <div className="die-container">
                 {diceElements}
