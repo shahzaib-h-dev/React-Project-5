@@ -33,6 +33,7 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px; 
+    margin-bottom:40px ;
 }
 
 .die-face {
@@ -83,3 +84,10 @@ main {
 .roll-btn:active {
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+.title{
+    font-size: 40px;
+    margin: 0;
+}
+
+
