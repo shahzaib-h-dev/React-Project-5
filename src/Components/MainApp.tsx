@@ -4,7 +4,7 @@ import Confetti from "react-confetti"
 
 export function MainApp() {
     
-    const [dice, setDice] = useState(generateAllNewDice)
+    const [dice, setDice] = useState(generateAllNewDice())
 
     const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0]?.value)
 
@@ -52,10 +52,15 @@ export function MainApp() {
         />
     )
 
-    return (
+   return (
         <main>
-           
-            {gameWon && <Confetti />}
+            
+            {gameWon && (
+                <Confetti 
+                    width={window.innerWidth} 
+                    height={window.innerHeight} 
+                />
+            )}
 
             <h1 className="title">Tenzies</h1>
             <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
